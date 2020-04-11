@@ -24,7 +24,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>uavs</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <ProjectName>simulator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,7 +94,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -105,7 +106,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -116,6 +117,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>NotSet</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -125,23 +127,36 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>NotSet</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Grafo.cpp" />
+    <ClCompile Include="Sensor.cpp" />
+    <ClCompile Include="server.cpp" />
     <ClCompile Include="simulator.cpp" />
+    <ClCompile Include="vants.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Grafo.h" />
     <ClInclude Include="helpers.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="Sensor.h" />
+    <ClInclude Include="server.h" />
     <ClInclude Include="simulator.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="vants.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="simulator.resx">
@@ -149,10 +164,62 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="background.png" />
-    <Image Include="blankImage.png" />
-    <Image Include="sensor.png" />
-    <Image Include="uav.png" />
+    <Image Include="Images\bcTimer.png" />
+    <Image Include="Images\bug-512.png" />
+    <Image Include="Images\clearOutput.png" />
+    <Image Include="Images\copy-512.png" />
+    <Image Include="Images\deltaT.png" />
+    <Image Include="Images\divide.png" />
+    <Image Include="Images\down.png" />
+    <Image Include="Images\downArrow.png" />
+    <Image Include="Images\draw.png" />
+    <Image Include="Images\filter-icon.png" />
+    <Image Include="Images\GPlay.png" />
+    <Image Include="Images\info.png" />
+    <Image Include="Images\log-512.png" />
+    <Image Include="Images\message.png" />
+    <Image Include="Images\message_Small.png" />
+    <Image Include="Images\move_copy_message.png" />
+    <Image Include="Images\msg.png" />
+    <Image Include="Images\Open-file-icon.png" />
+    <Image Include="Images\open-folder.png" />
+    <Image Include="Images\openFile.png" />
+    <Image Include="Images\play.png" />
+    <Image Include="Images\RecPath.png" />
+    <Image Include="Images\refresh.png" />
+    <Image Include="Images\reset.png" />
+    <Image Include="Images\RStop.png" />
+    <Image Include="Images\s1bc.png" />
+    <Image Include="Images\s1sleep.png" />
+    <Image Include="Images\save.png" />
+    <Image Include="Images\scenario.png" />
+    <Image Include="Images\sensorT.png" />
+    <Image Include="Images\server.png" />
+    <Image Include="Images\server3.png" />
+    <Image Include="Images\serverM.png" />
+    <Image Include="Images\speed.png" />
+    <Image Include="Images\ssr.png" />
+    <Image Include="Images\stop.png" />
+    <Image Include="Images\target.png" />
+    <Image Include="Images\targetStop.png" />
+    <Image Include="Images\timer.png" />
+    <Image Include="Images\uav.png" />
+    <Image Include="Images\uavts.png" />
+    <Image Include="Images\uav_Medium_Black.png" />
+    <Image Include="Images\uav_Small_Blue.png" />
+    <Image Include="Images\up.png" />
+    <Image Include="Images\Wt.png" />
+    <Image Include="Images\zzz.png" />
+    <Image Include="message.png" />
+    <Image Include="message_Small.png" />
+    <Image Include="s1bc.png" />
+    <Image Include="s1sleep.png" />
+    <Image Include="sensorT.png" />
+    <Image Include="uav_Medium_Black.png" />
+    <Image Include="uav_Vsmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="simulator1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

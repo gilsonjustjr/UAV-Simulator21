@@ -18,6 +18,18 @@
     <ClCompile Include="simulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grafo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="simulator.h">
@@ -26,18 +38,183 @@
     <ClInclude Include="helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grafo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="sensor.png">
+    <Image Include="message.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="uav.png">
+    <Image Include="uav_Vsmall.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="background.png">
+    <Image Include="message_Small.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="blankImage.png">
+    <Image Include="s1bc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sensorT.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="uav_Medium_Black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="s1sleep.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\server.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\divide.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\scenario.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\refresh.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\Wt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\deltaT.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\server3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\timer.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\save.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\open-folder.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\Open-file-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\downArrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\filter-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\log-512.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\openFile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\bcTimer.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\serverM.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\zzz.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\targetStop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\ssr.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\uavts.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\clearOutput.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\copy-512.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\msg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\bug-512.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\move_copy_message.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\speed.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\down.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\RecPath.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\target.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\info.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\RStop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\GPlay.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\reset.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\s1sleep.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\s1bc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\uav.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\message.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\message_Small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\stop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\play.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\uav_Medium_Black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\uav_Small_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\sensorT.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -45,5 +222,10 @@
     <EmbeddedResource Include="simulator.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="simulator1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
