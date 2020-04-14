@@ -369,6 +369,7 @@ private: System::ComponentModel::IContainer^  components;
 				this->Timer1sec = (gcnew System::Windows::Forms::Timer(this->components));
 				this->ttShowInfo = (gcnew System::Windows::Forms::ToolTip(this->components));
 				this->tsStepInterval = (gcnew System::Windows::Forms::TrackBar());
+				this->cbUAVAutonomy = (gcnew System::Windows::Forms::CheckBox());
 				this->checkBox8 = (gcnew System::Windows::Forms::CheckBox());
 				this->checkBox4 = (gcnew System::Windows::Forms::CheckBox());
 				this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
@@ -388,7 +389,6 @@ private: System::ComponentModel::IContainer^  components;
 				this->Connections = (gcnew System::Windows::Forms::GroupBox());
 				this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 				this->UAVAutonomyLabel = (gcnew System::Windows::Forms::Label());
-				this->cbUAVAutonomy = (gcnew System::Windows::Forms::CheckBox());
 				this->numUAVAutonomy = (gcnew System::Windows::Forms::NumericUpDown());
 				this->labelUAVAutonomy = (gcnew System::Windows::Forms::Label());
 				this->numTSTime = (gcnew System::Windows::Forms::NumericUpDown());
@@ -604,6 +604,18 @@ private: System::ComponentModel::IContainer^  components;
 				this->ttShowInfo->SetToolTip(this->tsStepInterval, L"Timer Interval: ");
 				this->tsStepInterval->Value = 150;
 				this->tsStepInterval->Scroll += gcnew System::EventHandler(this, &simulator::tbPause_Scroll_1);
+				// 
+				// cbUAVAutonomy
+				// 
+				this->cbUAVAutonomy->AutoSize = true;
+				this->cbUAVAutonomy->Location = System::Drawing::Point(130, 140);
+				this->cbUAVAutonomy->Name = L"cbUAVAutonomy";
+				this->cbUAVAutonomy->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+				this->cbUAVAutonomy->Size = System::Drawing::Size(15, 14);
+				this->cbUAVAutonomy->TabIndex = 139;
+				this->ttShowInfo->SetToolTip(this->cbUAVAutonomy, L"Toogle UAVs autonomy between distance or time");
+				this->cbUAVAutonomy->UseVisualStyleBackColor = true;
+				this->cbUAVAutonomy->CheckedChanged += gcnew System::EventHandler(this, &simulator::cbUAVAutonomy_CheckedChanged);
 				// 
 				// checkBox8
 				// 
@@ -851,18 +863,6 @@ private: System::ComponentModel::IContainer^  components;
 				this->UAVAutonomyLabel->Size = System::Drawing::Size(103, 14);
 				this->UAVAutonomyLabel->TabIndex = 140;
 				this->UAVAutonomyLabel->Text = L"Autonomy (s)";
-				// 
-				// cbUAVAutonomy
-				// 
-				this->cbUAVAutonomy->AutoSize = true;
-				this->cbUAVAutonomy->Location = System::Drawing::Point(130, 140);
-				this->cbUAVAutonomy->Name = L"cbUAVAutonomy";
-				this->cbUAVAutonomy->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-				this->cbUAVAutonomy->Size = System::Drawing::Size(15, 14);
-				this->cbUAVAutonomy->TabIndex = 139;
-				this->ttShowInfo->SetToolTip(this->cbUAVAutonomy, L"Toogle UAVs autonomy between distance or time");
-				this->cbUAVAutonomy->UseVisualStyleBackColor = true;
-				this->cbUAVAutonomy->CheckedChanged += gcnew System::EventHandler(this, &simulator::cbUAVAutonomy_CheckedChanged);
 				// 
 				// numUAVAutonomy
 				// 
@@ -1872,7 +1872,8 @@ private: System::ComponentModel::IContainer^  components;
 				this->tsSwapUAVs->Name = L"tsSwapUAVs";
 				this->tsSwapUAVs->Size = System::Drawing::Size(23, 22);
 				this->tsSwapUAVs->Text = L"toolStripButton2";
-				this->tsSwapUAVs->ToolTipText = L"Swap UAV with next, by autonomy reasons";
+				this->tsSwapUAVs->ToolTipText = L"Return to Home (RTH) function, when UAVs battery bellow 10%  it retorns to Base S"
+					L"tation";
 				this->tsSwapUAVs->Click += gcnew System::EventHandler(this, &simulator::tsSwapUAVs_Click);
 				// 
 				// tsBackToDeposit
@@ -7254,21 +7255,35 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 
 	if (!cbUAVAutonomy->Checked)
 	{
-		if ((v->getFlyTime() / 1000) > Convert::ToInt32(numUAVAutonomy->Value))
+		percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
+
+		if(percentPicture <= 10)
 			tsSwapUAVs->Checked = true;
 		else
 			tsSwapUAVs->Checked = false;
 
-		percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
+//		if ((v->getFlyTime() / 1000) > Convert::ToInt32(numUAVAutonomy->Value))
+//			tsSwapUAVs->Checked = true;
+//		else
+//			tsSwapUAVs->Checked = false;
+
+//		percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
 	}
 	else
 	{
-		if (v->getTotalDistance() > Convert::ToInt32(numUAVAutonomy->Value))
+		percentPicture = 100 - (v->getTotalDistance() / (Convert::ToInt32(numUAVAutonomy->Value)) * 100);
+
+		if (percentPicture <= 10)
 			tsSwapUAVs->Checked = true;
 		else
 			tsSwapUAVs->Checked = false;
 
-		percentPicture = 100 - (v->getTotalDistance() / (Convert::ToInt32(numUAVAutonomy->Value)) * 100);
+//		if (v->getTotalDistance() > Convert::ToInt32(numUAVAutonomy->Value))
+//			tsSwapUAVs->Checked = true;
+//		else
+//			tsSwapUAVs->Checked = false;
+
+		//percentPicture = 100 - (v->getTotalDistance() / (Convert::ToInt32(numUAVAutonomy->Value)) * 100);
 	}
 
 	if(percentPicture>0)
