@@ -7261,13 +7261,6 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 			tsSwapUAVs->Checked = true;
 		else
 			tsSwapUAVs->Checked = false;
-
-//		if ((v->getFlyTime() / 1000) > Convert::ToInt32(numUAVAutonomy->Value))
-//			tsSwapUAVs->Checked = true;
-//		else
-//			tsSwapUAVs->Checked = false;
-
-//		percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
 	}
 	else
 	{
@@ -7277,13 +7270,6 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 			tsSwapUAVs->Checked = true;
 		else
 			tsSwapUAVs->Checked = false;
-
-//		if (v->getTotalDistance() > Convert::ToInt32(numUAVAutonomy->Value))
-//			tsSwapUAVs->Checked = true;
-//		else
-//			tsSwapUAVs->Checked = false;
-
-		//percentPicture = 100 - (v->getTotalDistance() / (Convert::ToInt32(numUAVAutonomy->Value)) * 100);
 	}
 
 	if(percentPicture>0)
@@ -7309,7 +7295,7 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 	tsDecision->Text = "Decisions: " + v->getDecisionCounter().ToString("00");
 
 	//update gridView´s information;
-	for (unsigned int i = 0; i < qSensors; i++)
+	for (unsigned int i = 0; i < qSensors; i++)   
 	{
 		s = mySensors[i];
 
