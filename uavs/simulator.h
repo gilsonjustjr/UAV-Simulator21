@@ -4771,7 +4771,6 @@ private: System::Void _ResetScenarioForFinalSimulation(int Vants, int Sensors)
 	if (!tsLOG->Checked)
 	{
 		tsLOG->Checked = true;
-		//_LOGactivate(true);
 		splitContainer3->Panel2Collapsed = true;
 	}
 
@@ -4999,9 +4998,6 @@ private: System::Void createNode(unsigned int q, String ^ type)
 		qSensors = nQSensors;
 		tsQSensor->Text = qSensors.ToString();
 
-		//if(tsShowCluster->Checked)
-		//	_updateClusters(tsShowCluster->Checked);
-
 	} // end "sensors";
 
 	if (type == "server")
@@ -5119,37 +5115,8 @@ private: System::Void output_TextChanged_1(System::Object^  sender, System::Even
 
 private: System::Void tsRandSpeed_Click(System::Object^  sender, System::EventArgs^  e)
 {
-	//Vant ^ v;
-
-	//if (tsRandSpeed->Checked)
-	//{
-	//	tsSpeedSelect->Enabled = false;
-
-	//	output->Text += _getTimeCRLF() + "Random Speed enabled ...";
-	//	Random ^ rand = gcnew Random();
-
-	//	for (unsigned int i = 0; i < qUAVs; i++)
-	//	{
-	//		v = myVants[i];
-	//		v->setMySpeed(rand->Next(MIN_SPEED + 1, MAX_SPEED));
-	//		output->Text += _getTimeCRLF() + "UAV[" + i + "] set with Speed: " + v->getSpeed();
-	//	}
-	//}
-	//else
-	//{
-	//	tsSpeedSelect->Enabled = true;
-	//	output->Text += _getTimeCRLF() + "Random Speed disabled ...";
-
-	//	for (unsigned int i = 0; i < qUAVs; i++)
-	//	{
-	//		v = myVants[i];
-	//		v->setMySpeed(Speed);
-	//		output->Text += _getTimeCRLF() + "UAV[" + i + "] set with Speed: " + v->getSpeed();
-	//	}
-	//}
-
-	//simulationArea->Refresh();
 }
+
 private: System::Void simulationArea_Resize(System::Object^  sender, System::EventArgs^  e)
 {
 	tsSimulationAreaSize2->Text = "(" + simulationArea->ClientRectangle.Width + ", " + simulationArea->ClientRectangle.Height + ")";
@@ -5447,51 +5414,40 @@ private: System::Void tsMobilityModel_SelectedIndexChanged_1(System::Object^  se
 	switch (tsMobilityModel->SelectedIndex)
 	{
 		case 0: //Random Walk
-			//numMAXsteps->Value = MAX_STEPS;
 			setNewRWP = true;
-			//numMAXsteps->Enabled = true;
 			break;
 
 		case 1: //Random Waypoint
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 2: //Sensor NearPoint
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 3: //Scanning;
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 4: //Circular model;
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 5://Infinite loop
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 6: //Joystick
 			setNewRWP = true;
-		//	numMAXsteps->Enabled = false;
 			break;
 
 		case 7: //Route UAV[0]
 
 			rand = gcnew Random();
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 
 		case 8: //Gauss-Markov
-			//numMAXsteps->Value = 35;
-			//numMAXsteps->Enabled = true;
 			setNewRWP = true;
 			break;
 
@@ -5504,7 +5460,6 @@ private: System::Void tsMobilityModel_SelectedIndexChanged_1(System::Object^  se
 			PursueReference = rand->Next(Convert::ToInt32(qUAVs));
 			output->Text += _getTimeCRLF() + "ID[" + PursueReference + "] as reference ";
 			setNewRWP = true;
-			//numMAXsteps->Enabled = false;
 			break;
 		}
 }
@@ -5524,7 +5479,6 @@ private: System::Void _mouseHover(System::Object^ sender, System::EventArgs^  e)
 	if (type == "Sensor")
 		s = mySensors[index];
 
-	//Basic data from elements;
 	str = type + " ID[" + index.ToString() + "]" + CRLF;
 	str += "Coord: (" + (pic->Location.X + (pic->Width / 2)) + ", " + (pic->Location.Y + (pic->Height / 2)) + ")" + CRLF;
 
@@ -5725,6 +5679,7 @@ private: System::Void tsDrawCircle_Click(System::Object^  sender, System::EventA
 
 private: System::Void tsMobilityModel_Click(System::Object^  sender, System::EventArgs^  e) {
 }
+
 private: System::Void tsIUAVposition_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	for (unsigned int i = 0; i<qUAVs; i++)
@@ -5812,8 +5767,6 @@ private: System::Void _updateRoutes(int counter)
 		loopCounter++;
 	}
 
-	//here starts blue update, ... the method used by Kashubas et. al in his IEEE paper;
-
 	myVants[0]->setMyCounter(0);
 
 	for (unsigned int i = 0; i < _getActiveSensors(); i++)
@@ -5870,8 +5823,6 @@ private: System::Void _updateRoutes(int counter)
 	}
 
 	myVants[0]->setMyCounter(0);
-
-	//here starts the cyanRouting (hibridModel);
 
 	v = myVants[0];
 
@@ -5992,7 +5943,6 @@ private: System::Void bRunSimulation_Click(System::Object^  sender, System::Even
 	{
 		tw = gcnew StreamWriter("log\\Simulation_" + _getDateTime() + "_S" + qSensors.ToString() + "_R" + numConRangeV2S->Value.ToString() + ".csv", true);
 
-		//cell´s overhead;
 		toLog = "Simulation;"
 			+ "fromRED;"
 			+ "fromRED(X);"
@@ -6023,8 +5973,6 @@ private: System::Void bRunSimulation_Click(System::Object^  sender, System::Even
 		tw->WriteLine(toLog);
 		output->Text += _getTimeCRLF() + "Log activated. ";
 	}
-
-	//simulator::Size = System::Drawing::Size(2336, 2253);
 
 	for (int simulationNumber = 0; simulationNumber < Convert::ToInt32(numQtySimulation->Value); simulationNumber++)
 	{
@@ -6133,8 +6081,6 @@ private: System::Void bRunSimulation_Click(System::Object^  sender, System::Even
 			_ResetScenarioForSimulation(qUAVs, qSensors);
 	}
 
-	//simulator::Size = System::Drawing::Size(1336, 1053);
-
 	if (cbLog->Checked)
 	{
 		tw->Flush();
@@ -6185,7 +6131,6 @@ private: System::Void bClusterAlg_Click(System::Object^  sender, System::EventAr
 {
 	_updateClusters(tsShowCluster->Checked);
 }
-
 
 private: System::Void tsFixedTimers_Click(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -6389,8 +6334,6 @@ private: System::Boolean _isThereIntersection(Point ^ p, int radius)
 	return false;
 }
 
-
-
 private: Point _getMidPoint(unsigned int cluster)
 {
 	unsigned int qty = 0;
@@ -6418,9 +6361,6 @@ private: Point _getMidPoint2(Point ^ p1, Point ^ p2)
 	return Point ((p1->X + p2->X) / 2, (p1->Y + p2->Y) / 2);
 }
 
-
-
-
 private: System::Void tsDebug_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	simulationArea->Refresh();
@@ -6436,7 +6376,6 @@ private: System::Void tsShowCluster_Click(System::Object^  sender, System::Event
 	_updateClusters(tsShowCluster->Checked);
 }
 
-// Find the points of intersection.
 private: System::UInt32 FindLineCircleIntersections(Point Circle, float radius, PointF point1, PointF point2)
 {
 	float dx, dy, A, B, C, det, t;
@@ -6452,14 +6391,13 @@ private: System::UInt32 FindLineCircleIntersections(Point Circle, float radius, 
 
 	if ((A <= 0.0000001) || (det < 0))
 	{
-		// No real solutions.
 		intersection1 = Point(float::NaN, float::NaN);
 		intersection2 = Point(float::NaN, float::NaN);
+		
 		return 0;
 	}
 	else if (det == 0)
 	{
-		// One solution.
 		t = -B / (2 * A);
 		intersection1 = Point(point1.X + t * dx, point1.Y + t * dy);
 		intersection2 = Point(float::NaN, float::NaN);
@@ -6467,7 +6405,6 @@ private: System::UInt32 FindLineCircleIntersections(Point Circle, float radius, 
 	}
 	else
 	{
-		// Two solutions.
 		t = (float)((-B - Math::Sqrt(det)) / (2 * A));
 		intersection1 = Point(point1.X + t * dx, point1.Y + t * dy);
 
@@ -6478,13 +6415,8 @@ private: System::UInt32 FindLineCircleIntersections(Point Circle, float radius, 
 	}
 }
 
-// Find the tangent points for this circle and external point.
-// Return true if we find the tangents, false if the point is
-// inside the circle.
 private: System::Boolean FindTangents(PointF center, float radius, PointF external_point)//
 {
-	// Find the distance squared from the
-	// external point to the circle's center.
 	double dx = center.X - external_point.X;
 	double dy = center.Y - external_point.Y;
 	double D_squared = dx * dx + dy * dy;
@@ -6496,61 +6428,47 @@ private: System::Boolean FindTangents(PointF center, float radius, PointF extern
 		return false;
 	}
 
-	// Find the distance from the external point
-	// to the tangent points.
 	double L = Math::Sqrt(D_squared - radius * radius);
 
-	// Find the points of intersection between
-	// the original circle and the circle with
-	// center external_point and radius dist.
 	FindCircleCircleIntersections(center.X, center.Y, radius, external_point.X, external_point.Y, (float)L);
 
 	return true;
 }
 
-// Find the points where the two circles intersect.
 private: System::Int32 FindCircleCircleIntersections(
 	float cx0, float cy0, float radius0,
 	float cx1, float cy1, float radius1)
 {
-	// Find the distance between the centers.
 	float dx = cx0 - cx1;
 	float dy = cy0 - cy1;
 	double dist = Math::Sqrt(dx * dx + dy * dy);
 
-	// See how many solutions there are.
 	if (dist > radius0 + radius1)
 	{
-		// No solutions, the circles are too far apart.
 		tangent1 = Point(float::NaN, float::NaN);
 		tangent2 = Point(float::NaN, float::NaN);
 		return 0;
 	}
 	else if (dist < Math::Abs(radius0 - radius1))
 	{
-		// No solutions, one circle contains the other.
 		tangent1 = Point(float::NaN, float::NaN);
 		tangent2 = Point(float::NaN, float::NaN);
 		return 0;
 	}
 	else if ((dist == 0) && (radius0 == radius1))
 	{
-		// No solutions, the circles coincide.
 		tangent1 = Point(float::NaN, float::NaN);
 		tangent2 = Point(float::NaN, float::NaN);
 		return 0;
 	}
 	else
 	{
-		// Find a and h.
 		double a = (radius0 * radius0 - radius1 * radius1 + dist * dist) / (2 * dist);
 		double h = Math::Sqrt(radius0 * radius0 - a * a);
 
-		// Find P2.
 		double cx2 = cx0 + a * (cx1 - cx0) / dist;
 		double cy2 = cy0 + a * (cy1 - cy0) / dist;
 
-		// Get the points P3.
 		tangent1 = Point(
 			(float)(cx2 + h * (cy1 - cy0) / dist),
 			(float)(cy2 - h * (cx1 - cx0) / dist));
@@ -6558,7 +6476,6 @@ private: System::Int32 FindCircleCircleIntersections(
 			(float)(cx2 - h * (cy1 - cy0) / dist),
 			(float)(cy2 + h * (cx1 - cx0) / dist));
 
-		// See if we have 1 or 2 solutions.
 		if (dist == radius0 + radius1) return 1;
 		return 2;
 	}
@@ -6673,7 +6590,6 @@ private: Point _getNearestGridLocation(Point ^ p)
 	return bestPosition;
 }
 
-
 private: System::Void _myDebug(String ^ debug)
 {
 	output->Text += _getTimeCRLF() + debug;
@@ -6758,9 +6674,6 @@ private: System::Void tbPause_Scroll_1(System::Object^  sender, System::EventArg
 	nextStepTimer->Interval = tsStepInterval->Value;
 	tsUAVSpeedText->Text = "UAV Speed: " + myVants[0]->getMyRealSpeed(tsStepInterval->Value).ToString("00") + "m/s";
 	output->Text += _getTimeCRLF() + "UAV Speed changed to: " + myVants[0]->getMyRealSpeed(tsStepInterval->Value).ToString("00") + "m/s"; // -stepTimerValue: " + tsStepInterval->Value;
-
-	//myVants[0]->getMyStopWatch()->Restart();
-	//myVants[0]->setMyTotalDistance(0);
 }
 
 private: System::Void _LOGactivate(bool start)
@@ -7038,10 +6951,6 @@ private: System::Void _activatetsMicroTimeSlots(bool state)
 		Timer1sec->Start();
 		SystemStopWatch->Restart();
 
-		//Thread::Sleep(500);
-
-		//output->Text += _getTimeCRLF() + "tsStepInterval: " + Convert::ToInt32(tsStepInterval->Value);
-
 		qTimeSlots = Convert::ToInt32(tsqTimeSlots->Text);
 		totalTime = v->getTotalTimeForRoute(Convert::ToInt32(readTime->Value), Convert::ToInt32(tsStepInterval->Value));
 
@@ -7160,8 +7069,6 @@ private: System::Void tsMicroTimeSlots_Click(System::Object^  sender, System::Ev
 		_activatetsMicroTimeSlots(false);
 }
 
-
-
 private: System::Void tsRandSleep_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	if(tsRandSleep->Checked)
@@ -7265,7 +7172,7 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 	else
 		tsSwapUAVs->Checked = false;
 
-//	if(percentPicture>0)
+	if(percentPicture>0)
 		tsBattery->Value = percentPicture;
 
 	tsTimer2->Text = SystemStopWatch->Elapsed.ToString("mm':'ss':'fff");
@@ -7398,8 +7305,6 @@ private: System::Boolean _actualTimeSlotIsFree(bool random)
 		}
 	}
 
-	    
-
 	return true;
 }
 
@@ -7433,7 +7338,6 @@ private: System::String ^ _getTimeCRLF_()
 		return "\r\n" + SystemStopWatch->Elapsed.ToString("mm':'ss':'fff") + " / TS: " + _getActualTimeSlot().ToString("00");
 }
 
-
 private: System::String ^ _getTimeToLog()
 {
 	return SystemStopWatch->ElapsedMilliseconds.ToString();
@@ -7446,8 +7350,6 @@ private: System::Void tsSetTimeSlot_Click(System::Object^  sender, System::Event
 	else
 		output->Text += _getTimeCRLF() + "UAV will not programm Sensors timeslots, it will keep the Random timeSlot on them, and just follow it.";
 }
-
-
 
 private: System::Void tsHome_Click(System::Object^  sender, System::EventArgs^  e) 
 {
@@ -7482,7 +7384,6 @@ private: System::Void toolStripButton1_Click_1(System::Object^  sender, System::
 
 private: System::Void toolStripButton2_Click(System::Object^  sender, System::EventArgs^  e) 
 {
-
 }
 
 private: System::Void tsqTimeSlots_TextChanged(System::Object^  sender, System::EventArgs^  e) 
@@ -7497,26 +7398,6 @@ private: System::Void tsSwapUAVs_Click(System::Object^  sender, System::EventArg
 }
 private: System::Void cbUAVAutonomy_CheckedChanged(System::Object^  sender, System::EventArgs^  e) 
 {
-	//if (cbUAVAutonomy->Checked)
-	//{
-	//	UAVAutonomyLabel->Text = "Autonomy (m)";
-	//	numUAVAutonomy->Minimum = 1000;
-	//	numUAVAutonomy->Maximum = 20000;
-	//	numUAVAutonomy->Value = 10000;
-	//	numUAVAutonomy->Increment = 1000;
-
-	//	output->Text += _getTimeCRLF() + "UAV Autonomy set to distance: " + numUAVAutonomy->Value + "m";
-	//}
-	//else
-	//{
-	//	UAVAutonomyLabel->Text = "Autonomy (s)";
-	//	numUAVAutonomy->Minimum = 30;
-	//	numUAVAutonomy->Maximum = 3600;
-	//	numUAVAutonomy->Value = 600;
-	//	numUAVAutonomy->Increment = 30;
-
-	//	output->Text += _getTimeCRLF() + "UAV Autonomy set to Fly Time: " + numUAVAutonomy->Value + "s";
-	//}
 }
 private: System::Void tsShowRoute_Click(System::Object^  sender, System::EventArgs^  e) {
 }
