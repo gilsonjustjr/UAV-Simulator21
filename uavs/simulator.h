@@ -322,7 +322,7 @@ private: System::Windows::Forms::ToolStripButton^  tsLockReset;
 private: System::Windows::Forms::ToolStripLabel^  tsDecision;
 private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator18;
 private: System::Windows::Forms::ToolStripButton^  tsSwapUAVs;
-private: System::Windows::Forms::CheckBox^  cbUAVAutonomy;
+
 private: System::Windows::Forms::NumericUpDown^  numUAVAutonomy;
 private: System::Windows::Forms::Label^  labelUAVAutonomy;
 private: System::Windows::Forms::Label^  UAVAutonomyLabel;
@@ -331,6 +331,8 @@ private: System::Windows::Forms::ToolStripProgressBar^  tsBattery;
 
 private: System::Windows::Forms::ToolStripLabel^  tsSimulationCounter;
 private: System::Windows::Forms::ToolStripButton^  tsSound;
+private: System::Windows::Forms::NumericUpDown^  numBatteryLevel;
+
 
 
 
@@ -362,14 +364,14 @@ private: System::ComponentModel::IContainer^  components;
 			void InitializeComponent(void)
 			{
 				this->components = (gcnew System::ComponentModel::Container());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 				System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(simulator::typeid));
 				this->Timer1sec = (gcnew System::Windows::Forms::Timer(this->components));
 				this->ttShowInfo = (gcnew System::Windows::Forms::ToolTip(this->components));
 				this->tsStepInterval = (gcnew System::Windows::Forms::TrackBar());
-				this->cbUAVAutonomy = (gcnew System::Windows::Forms::CheckBox());
+				this->numBatteryLevel = (gcnew System::Windows::Forms::NumericUpDown());
 				this->checkBox8 = (gcnew System::Windows::Forms::CheckBox());
 				this->checkBox4 = (gcnew System::Windows::Forms::CheckBox());
 				this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
@@ -532,6 +534,7 @@ private: System::ComponentModel::IContainer^  components;
 				this->ttLOG = (gcnew System::Windows::Forms::ToolTip(this->components));
 				this->nextStepTimer = (gcnew System::Windows::Forms::Timer(this->components));
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tsStepInterval))->BeginInit();
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numBatteryLevel))->BeginInit();
 				this->toolStripContainer1->SuspendLayout();
 				this->toolStripContainer2->SuspendLayout();
 				this->tabControl1->SuspendLayout();
@@ -605,17 +608,18 @@ private: System::ComponentModel::IContainer^  components;
 				this->tsStepInterval->Value = 150;
 				this->tsStepInterval->Scroll += gcnew System::EventHandler(this, &simulator::tbPause_Scroll_1);
 				// 
-				// cbUAVAutonomy
+				// numBatteryLevel
 				// 
-				this->cbUAVAutonomy->AutoSize = true;
-				this->cbUAVAutonomy->Location = System::Drawing::Point(130, 140);
-				this->cbUAVAutonomy->Name = L"cbUAVAutonomy";
-				this->cbUAVAutonomy->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-				this->cbUAVAutonomy->Size = System::Drawing::Size(15, 14);
-				this->cbUAVAutonomy->TabIndex = 139;
-				this->ttShowInfo->SetToolTip(this->cbUAVAutonomy, L"Toogle UAVs autonomy between distance or time");
-				this->cbUAVAutonomy->UseVisualStyleBackColor = true;
-				this->cbUAVAutonomy->CheckedChanged += gcnew System::EventHandler(this, &simulator::cbUAVAutonomy_CheckedChanged);
+				this->numBatteryLevel->Font = (gcnew System::Drawing::Font(L"Lucida Console", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->numBatteryLevel->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
+				this->numBatteryLevel->Location = System::Drawing::Point(178, 136);
+				this->numBatteryLevel->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 90, 0, 0, 0 });
+				this->numBatteryLevel->Name = L"numBatteryLevel";
+				this->numBatteryLevel->Size = System::Drawing::Size(42, 20);
+				this->numBatteryLevel->TabIndex = 141;
+				this->ttShowInfo->SetToolTip(this->numBatteryLevel, L"Battery Level to Return to Base Station  (RTH)");
+				this->numBatteryLevel->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
 				// 
 				// checkBox8
 				// 
@@ -817,8 +821,8 @@ private: System::ComponentModel::IContainer^  components;
 				// 
 				// splitContainer2.Panel1
 				// 
+				this->splitContainer2->Panel1->Controls->Add(this->numBatteryLevel);
 				this->splitContainer2->Panel1->Controls->Add(this->UAVAutonomyLabel);
-				this->splitContainer2->Panel1->Controls->Add(this->cbUAVAutonomy);
 				this->splitContainer2->Panel1->Controls->Add(this->numUAVAutonomy);
 				this->splitContainer2->Panel1->Controls->Add(this->labelUAVAutonomy);
 				this->splitContainer2->Panel1->Controls->Add(this->numTSTime);
@@ -858,7 +862,7 @@ private: System::ComponentModel::IContainer^  components;
 				// UAVAutonomyLabel
 				// 
 				this->UAVAutonomyLabel->AutoSize = true;
-				this->UAVAutonomyLabel->Location = System::Drawing::Point(6, 140);
+				this->UAVAutonomyLabel->Location = System::Drawing::Point(6, 139);
 				this->UAVAutonomyLabel->Name = L"UAVAutonomyLabel";
 				this->UAVAutonomyLabel->Size = System::Drawing::Size(103, 14);
 				this->UAVAutonomyLabel->TabIndex = 140;
@@ -869,11 +873,11 @@ private: System::ComponentModel::IContainer^  components;
 				this->numUAVAutonomy->Font = (gcnew System::Drawing::Font(L"Lucida Console", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->numUAVAutonomy->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 60, 0, 0, 0 });
-				this->numUAVAutonomy->Location = System::Drawing::Point(151, 137);
+				this->numUAVAutonomy->Location = System::Drawing::Point(118, 136);
 				this->numUAVAutonomy->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 3600, 0, 0, 0 });
 				this->numUAVAutonomy->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 30, 0, 0, 0 });
 				this->numUAVAutonomy->Name = L"numUAVAutonomy";
-				this->numUAVAutonomy->Size = System::Drawing::Size(67, 20);
+				this->numUAVAutonomy->Size = System::Drawing::Size(54, 20);
 				this->numUAVAutonomy->TabIndex = 138;
 				this->numUAVAutonomy->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 600, 0, 0, 0 });
 				// 
@@ -1261,34 +1265,34 @@ private: System::ComponentModel::IContainer^  components;
 					this->dataID,
 						this->SensorTimer, this->TImeSlotColumn
 				});
-				dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
-				dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Window;
+				dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
-				dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::ControlText;
-				dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-				this->dataGridView->DefaultCellStyle = dataGridViewCellStyle1;
+				dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::ControlText;
+				dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+				dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+				this->dataGridView->DefaultCellStyle = dataGridViewCellStyle4;
 				this->dataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 				this->dataGridView->Location = System::Drawing::Point(0, 0);
 				this->dataGridView->Name = L"dataGridView";
-				dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-				dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Control;
+				dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-				dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::Transparent;
-				dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+				dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
+				dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::Transparent;
+				dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
 				this->dataGridView->RowHeadersVisible = false;
-				dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle3->BackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle3->ForeColor = System::Drawing::Color::Black;
-				dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::Black;
-				this->dataGridView->RowsDefaultCellStyle = dataGridViewCellStyle3;
+				dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle6->BackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
+				dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
+				this->dataGridView->RowsDefaultCellStyle = dataGridViewCellStyle6;
 				this->dataGridView->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 				this->dataGridView->Size = System::Drawing::Size(223, 224);
 				this->dataGridView->TabIndex = 103;
@@ -2426,6 +2430,7 @@ private: System::ComponentModel::IContainer^  components;
 				this->Load += gcnew System::EventHandler(this, &simulator::simulator_Load);
 				this->Resize += gcnew System::EventHandler(this, &simulator::simulator_Resize);
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tsStepInterval))->EndInit();
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numBatteryLevel))->EndInit();
 				this->toolStripContainer1->ResumeLayout(false);
 				this->toolStripContainer1->PerformLayout();
 				this->toolStripContainer2->ResumeLayout(false);
@@ -7253,26 +7258,14 @@ private: System::Void timer1sec_Tick(System::Object^  sender, System::EventArgs^
 {
 	simulationArea->Refresh();     
 
-	if (!cbUAVAutonomy->Checked)
-	{
-		percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
+	percentPicture = 100 - 100 * Convert::ToDouble((v->getFlyTime() / 1000) / numUAVAutonomy->Value);
 
-		if(percentPicture <= 10)
-			tsSwapUAVs->Checked = true;
-		else
-			tsSwapUAVs->Checked = false;
-	}
+	if(percentPicture <= numBatteryLevel->Value)
+		tsSwapUAVs->Checked = true;
 	else
-	{
-		percentPicture = 100 - (v->getTotalDistance() / (Convert::ToInt32(numUAVAutonomy->Value)) * 100);
+		tsSwapUAVs->Checked = false;
 
-		if (percentPicture <= 10)
-			tsSwapUAVs->Checked = true;
-		else
-			tsSwapUAVs->Checked = false;
-	}
-
-	if(percentPicture>0)
+//	if(percentPicture>0)
 		tsBattery->Value = percentPicture;
 
 	tsTimer2->Text = SystemStopWatch->Elapsed.ToString("mm':'ss':'fff");
@@ -7504,26 +7497,26 @@ private: System::Void tsSwapUAVs_Click(System::Object^  sender, System::EventArg
 }
 private: System::Void cbUAVAutonomy_CheckedChanged(System::Object^  sender, System::EventArgs^  e) 
 {
-	if (cbUAVAutonomy->Checked)
-	{
-		UAVAutonomyLabel->Text = "Autonomy (m)";
-		numUAVAutonomy->Minimum = 1000;
-		numUAVAutonomy->Maximum = 20000;
-		numUAVAutonomy->Value = 10000;
-		numUAVAutonomy->Increment = 1000;
+	//if (cbUAVAutonomy->Checked)
+	//{
+	//	UAVAutonomyLabel->Text = "Autonomy (m)";
+	//	numUAVAutonomy->Minimum = 1000;
+	//	numUAVAutonomy->Maximum = 20000;
+	//	numUAVAutonomy->Value = 10000;
+	//	numUAVAutonomy->Increment = 1000;
 
-		output->Text += _getTimeCRLF() + "UAV Autonomy set to distance: " + numUAVAutonomy->Value + "m";
-	}
-	else
-	{
-		UAVAutonomyLabel->Text = "Autonomy (s)";
-		numUAVAutonomy->Minimum = 30;
-		numUAVAutonomy->Maximum = 3600;
-		numUAVAutonomy->Value = 600;
-		numUAVAutonomy->Increment = 30;
+	//	output->Text += _getTimeCRLF() + "UAV Autonomy set to distance: " + numUAVAutonomy->Value + "m";
+	//}
+	//else
+	//{
+	//	UAVAutonomyLabel->Text = "Autonomy (s)";
+	//	numUAVAutonomy->Minimum = 30;
+	//	numUAVAutonomy->Maximum = 3600;
+	//	numUAVAutonomy->Value = 600;
+	//	numUAVAutonomy->Increment = 30;
 
-		output->Text += _getTimeCRLF() + "UAV Autonomy set to Fly Time: " + numUAVAutonomy->Value + "s";
-	}
+	//	output->Text += _getTimeCRLF() + "UAV Autonomy set to Fly Time: " + numUAVAutonomy->Value + "s";
+	//}
 }
 private: System::Void tsShowRoute_Click(System::Object^  sender, System::EventArgs^  e) {
 }
