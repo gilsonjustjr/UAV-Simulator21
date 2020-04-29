@@ -350,6 +350,7 @@ private: System::Windows::Forms::NumericUpDown^  numBatteryLevel;
 
 
 
+
 private: System::ComponentModel::IContainer^  components;
 			/// <summary>
 			/// Required designer variable.
@@ -364,9 +365,9 @@ private: System::ComponentModel::IContainer^  components;
 			void InitializeComponent(void)
 			{
 				this->components = (gcnew System::ComponentModel::Container());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 				System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(simulator::typeid));
 				this->Timer1sec = (gcnew System::Windows::Forms::Timer(this->components));
 				this->ttShowInfo = (gcnew System::Windows::Forms::ToolTip(this->components));
@@ -1265,34 +1266,34 @@ private: System::ComponentModel::IContainer^  components;
 					this->dataID,
 						this->SensorTimer, this->TImeSlotColumn
 				});
-				dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Window;
-				dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
+				dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::ControlText;
-				dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::ControlText;
-				dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-				this->dataGridView->DefaultCellStyle = dataGridViewCellStyle4;
+				dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
+				dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+				dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+				this->dataGridView->DefaultCellStyle = dataGridViewCellStyle1;
 				this->dataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 				this->dataGridView->Location = System::Drawing::Point(0, 0);
 				this->dataGridView->Name = L"dataGridView";
-				dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Control;
-				dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+				dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Lucida Console", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
-				dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::Transparent;
-				dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+				dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+				dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::Transparent;
+				dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 				this->dataGridView->RowHeadersVisible = false;
-				dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-				dataGridViewCellStyle6->BackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Black;
-				dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::Black;
-				this->dataGridView->RowsDefaultCellStyle = dataGridViewCellStyle6;
+				dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+				dataGridViewCellStyle3->BackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle3->ForeColor = System::Drawing::Color::Black;
+				dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::Black;
+				this->dataGridView->RowsDefaultCellStyle = dataGridViewCellStyle3;
 				this->dataGridView->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 				this->dataGridView->Size = System::Drawing::Size(223, 224);
 				this->dataGridView->TabIndex = 103;
@@ -1857,7 +1858,7 @@ private: System::ComponentModel::IContainer^  components;
 				this->tsMobilityModel->MergeIndex = 6;
 				this->tsMobilityModel->Name = L"tsMobilityModel";
 				this->tsMobilityModel->Size = System::Drawing::Size(150, 25);
-				this->tsMobilityModel->Text = L"uTimeSlots";
+				this->tsMobilityModel->Text = L"uTimeSlots Auto";
 				this->tsMobilityModel->ToolTipText = L"Choose a mobility model for simulation";
 				this->tsMobilityModel->SelectedIndexChanged += gcnew System::EventHandler(this, &simulator::tsMobilityModel_SelectedIndexChanged_1);
 				this->tsMobilityModel->Click += gcnew System::EventHandler(this, &simulator::tsMobilityModel_Click);
@@ -4013,13 +4014,12 @@ private: System::Void nextStepTimer_Tick(System::Object^  sender, System::EventA
 							if (simulationCounter >= numQtySimulation->Value)
 							{
 								logger->Close();
-								//simulationCounter = 0;
-
 								tsSimulationCounter->Text = simulationCounter.ToString("00") + "/" + numQtySimulation->Value.ToString("000");
-
 								_simulationPlayButton(false);
 								Thread::Sleep(Convert::ToInt32(numSimulationPause->Value));
 
+								//here1     
+								output->Text += _getTimeCRLF() + "Here1";
 								_ResetScenarioForFinalSimulation(1, qSensors);
 							}
 							else
@@ -4029,12 +4029,16 @@ private: System::Void nextStepTimer_Tick(System::Object^  sender, System::EventA
 
 								Thread::Sleep(Convert::ToInt32(numSimulationPause->Value));
 
+								//here  
+								output->Text += _getTimeCRLF() + "Here2";
 								_ResetScenarioForFinalSimulation(1, qSensors);
+								break;
 							}
 
-							s = mySensors[nextID];
-							target = v->getNearestPoint(s->getCenterLocation(), Convert::ToInt32(numConRangeV2S->Value));
-							output->Text += _getTimeCRLF() + "UAV[" + v->getID() + "]: My new target is SensorID[" + s->getID() + "] at " + _getStringFromCoordinates(target);
+							//output->Text += _getTimeCRLF() + "Here3";
+							//s = mySensors[nextID];
+							//target = v->getNearestPoint(s->getCenterLocation(), Convert::ToInt32(numConRangeV2S->Value));
+							//output->Text += _getTimeCRLF() + "UAV[" + v->getID() + "]: My new target is SensorID[" + s->getID() + "] at " + _getStringFromCoordinates(target);
 						}
 					}
 					else
@@ -4612,7 +4616,7 @@ private: System::Void _ResetScenarioForSimulation(int Vants, int Sensors)
 	setNewRWP = true;
 
 	Speed = 2;
-
+	   
 	tsSpeed->Text = Speed.ToString();
 	tsMobilityModel->Enabled = true;
 	tsDrawPoint->Checked = true;
@@ -4721,8 +4725,8 @@ private: System::Void _ResetScenarioForFinalSimulation(int Vants, int Sensors)
 	nextStepTimer->Interval = tsStepInterval->Value;
 	tsqTimeSlots->Text = "10";
 
-	nQUAVs = Vants;
-	nQSensors = Sensors;
+	//nQUAVs = Vants;
+	//nQSensors = Sensors;     
 
 	for (unsigned int i = 0; i<qUAVs; i++)
 	{
@@ -4746,7 +4750,7 @@ private: System::Void _ResetScenarioForFinalSimulation(int Vants, int Sensors)
 	qUAVs = 0;
 	qSensors = 0;
 
-	nQUAVs = Vants;
+	nQUAVs = 1;  
 	nQSensors = Sensors;
 
 	createNode(nQSensors, "sensor");
@@ -4773,6 +4777,8 @@ private: System::Void _ResetScenarioForFinalSimulation(int Vants, int Sensors)
 		tsLOG->Checked = true;
 		splitContainer3->Panel2Collapsed = true;
 	}
+
+	nextID = myVants[0]->getNextUnvisitedID_withoutDeposit(true);
 
 	_simulationPlayButton(false);
 }
@@ -4913,7 +4919,7 @@ private: System::Void createNode(unsigned int q, String ^ type)
 	if (type == "uav")
 	{
 		if (qUAVs<q)
-		{
+		{ 
 			Random rand;
 
 			for (unsigned int i = qUAVs; i < q; i++)
@@ -6119,10 +6125,10 @@ private: System::Void tsScreenshoot_Click(System::Object^  sender, System::Event
 {
 	Bitmap ^ printscreen = gcnew Bitmap(simulationArea->Bounds.Width, simulationArea->Bounds.Height);
 	Graphics ^ graphics = Graphics::FromImage(printscreen);
-	String ^ path = ".\\log\\PrintScreen_" + _getDateTime() + ".jpg";
+	String ^ path = ".\\log\\PrintScreen_" + _getDateTime() + ".png";
 
 	graphics->CopyFromScreen(this->Bounds.X + 20, this->Bounds.Y + 85, 0, 0, simulationArea->Bounds.Size);
-	printscreen->Save(path, ImageFormat::Jpeg);
+	printscreen->Save(path, ImageFormat::Png);
 
 	output->Text += _getTimeCRLF() + "Screenshot from SimulationArea was saved as " + path;
 }
@@ -7400,6 +7406,10 @@ private: System::Void cbUAVAutonomy_CheckedChanged(System::Object^  sender, Syst
 {
 }
 private: System::Void tsShowRoute_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void toolStripButton2_Click_1(System::Object^  sender, System::EventArgs^  e) 
+{
+
 }
 };
 }
